@@ -14,6 +14,8 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
+    working_directory: ~/repo
+
     steps:
       - checkout
 
@@ -23,8 +25,6 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-          paths:
-            - /home/frontend/final-project
 
       - run:
           name: Install pkgs
