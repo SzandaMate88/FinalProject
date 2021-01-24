@@ -9,6 +9,7 @@ export const registerController = {
         userId,
         userName,
       };
+      console.log('fsgdfg')
       res.status(201).json(message);
     } catch (err) {
       next(err)
