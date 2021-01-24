@@ -19,8 +19,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest",
+    "eject": "react-scripts eject",
+    "lint": "node_modules/.bin/eslint --ext js src"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +42,15 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-plugin-react": "^7.22.0",
+    "husky": "^4.3.8",
     "prettier": "2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "node_modules/.bin/eslint --fix src/**/*.js",
+      "pre-push": "npm run test"
+    }
   }
 }
