@@ -25,11 +25,6 @@ jobs:
           name: Install pkgs
           command: |
             npm install
-
-      - run: 
-          name: Tests
-          command: |
-            npm test
       - run:
           name: Linting
           command: |
