@@ -14,17 +14,27 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/repo/FinalProject/frontend/final-project
-
     steps:
       - checkout
 
       # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+          paths:
+            - /home/frontend/final-project
 
       - run:
           name: Install pkgs
           command: |
             npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: 
           name: Tests
