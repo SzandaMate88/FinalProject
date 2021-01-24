@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "NODE_ENV=${NODE_ENV:-dev} nodemon --exec babel-node -r ./node_modules/dotenv/config src/index.js"
   },
   "author": "",
   "license": "ISC",
